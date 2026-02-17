@@ -1,19 +1,24 @@
 ```mermaid
 flowchart TD
 
-    User --> FastAPI
-    FastAPI --> Routes
-    Routes --> LangGraph
-    LangGraph --> Nodes
-    Nodes --> Tools
-    Nodes --> State
+    User[User] --> FastAPI[FastAPI Application]
 
-    FastAPI --> Middleware
-    FastAPI --> Metrics
+    FastAPI --> Routes[API Routes]
+    Routes --> LangGraph[LangGraph Engine]
+    LangGraph --> Nodes[Graph Nodes]
+    Nodes --> Tools[External Tools]
+    Nodes --> State[Conversation State]
 
-    subgraph Google_Cloud
-        CloudRun
-        ArtifactRegistry
-        SecretManager
-        CloudMonitoring
+    FastAPI --> Middleware[Middleware Layer]
+    FastAPI --> Metrics[Metrics & Monitoring]
+
+    subgraph Google_Cloud_Infrastructure
+        direction TB
+        CloudRun[Cloud Run]
+        ArtifactRegistry[Artifact Registry]
+        SecretManager[Secret Manager]
+        CloudMonitoring[Cloud Monitoring]
     end
+
+    CloudRun --> FastAPI
+```
