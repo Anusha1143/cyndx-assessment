@@ -94,12 +94,15 @@ Response --> Client
 **🥇 Step 1: Clone Repository**
 
 git clone https://github.com/Anusha1143/cyndx-assessment.git
+
 cd cyndx-assessment
 
 **🥈 Step 2: Create Virtual Environment**
 
 
 python -m venv venv
+
+
 venv\Scripts\activate
 
 **🥉 Step 3: Install Dependencies**
