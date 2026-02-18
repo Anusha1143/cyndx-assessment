@@ -1,37 +1,39 @@
 
 **CYNDX Assessment**
+
 **LangGraph-Based AI Agent API – Serverless Deployment**
+
 **Project Overview**
 
-This project implements a session-based AI Agent API using:
+**This project implements a session-based AI Agent API using:**
 
-FastAPI for REST API development
+*FastAPI for REST API development
 
-LangGraph for stateful agent orchestration
+*LangGraph for stateful agent orchestration
 
-OpenAI (gpt-4o-mini) for LLM responses
+*OpenAI (gpt-4o-mini) for LLM responses
 
-Docker for containerization
+*Docker for containerization
 
-Google Cloud Run for serverless deployment
+*Google Cloud Run for serverless deployment
 
-The system supports session management, conversation state handling, and scalable cloud deployment.
+*The system supports session management, conversation state handling, and scalable cloud deployment.
 
-2️⃣ Key Features
+**2️⃣ Key Features**
 
-Session-based conversational AI
+*Session-based conversational AI
 
-Stateful message handling per session
+*Stateful message handling per session
 
-LangGraph state graph architecture
+*LangGraph state graph architecture
 
-Tool-ready design (extensible)
+*Tool-ready design (extensible)
 
-RESTful API endpoints
+*RESTful API endpoints
 
-Dockerized deployment
+*Dockerized deployment
 
-Serverless hosting via Google Cloud Run
+*Serverless hosting via Google Cloud Run
 
 3️⃣ System Architecture
 High-Level Flow
