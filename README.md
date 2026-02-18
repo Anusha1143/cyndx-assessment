@@ -1,7 +1,7 @@
 
-CYNDX Assessment
-LangGraph-Based AI Agent API – Serverless Deployment
-1️⃣ Project Overview
+**CYNDX Assessment**
+**LangGraph-Based AI Agent API – Serverless Deployment**
+**Project Overview**
 
 This project implements a session-based AI Agent API using:
 
