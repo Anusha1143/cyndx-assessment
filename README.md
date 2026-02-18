@@ -42,30 +42,21 @@ This project implements a session-based AI Agent API using:
 **🔄 High-Level Flow****
 
 Client Request
-
     │
     ▼
-    
 FastAPI Routes
 
     │
-    ▼
-    
+    ▼   
 Session Manager
-
     │
-    ▼
-    
+    ▼ 
 LangGraph State Graph
-
     │
     ▼
-    
 OpenAI Model (gpt-4o-mini
-
     │
     ▼
-    
 JSON Response
 
 
@@ -82,41 +73,31 @@ JSON Response
 
 
 ### 📂 Project Structure
-cyndx-assessment/
-│
-├── cyndx_langgraph_api/
-│   │
-│   ├── app/
-│   │   ├── graph.py
-│   │   ├── nodes.py
-│   │   ├── routes.py
-│   │   ├── state.py
-│   │   ├── tools.py
-│   │
-│   ├── core/
-│   │   ├── errors.py
-│   │
-│   ├── main.py
-│
-├── Dockerfile
-├── requirements.txt
-├── .env              (excluded from Git)
-├── README.md
+
+## 📦 Application Flow
+
+```mermaid
+flowchart TD
+
+main.py --> routes.py
+routes.py --> graph.py
+graph.py --> nodes.py
+nodes.py --> tools.py
+graph.py --> state.py
+main.py --> errors.py
+```
 
 
 ### ⚙ Local Execution Steps
 **🥇 Step 1: Clone Repository**
 
 git clone https://github.com/Anusha1143/cyndx-assessment.git
-
 cd cyndx-assessment
 
 **🥈 Step 2: Create Virtual Environment**
 
 
 python -m venv venv
-
-
 venv\Scripts\activate
 
 **🥉 Step 3: Install Dependencies**
@@ -177,14 +158,10 @@ POST /sessions
 
 
 Invoke-RestMethod `
-
-  -Uri "http://127.0.0.1:8000/sessions" 
-  `
-  -Method POST `
-  
-  -ContentType "application/json" `
-  
-  -Body "{}"
+-Uri "http://127.0.0.1:8000/sessions" 
+-Method POST `
+-ContentType "application/json" `
+-Body "{}"
 
 **💬 6.3 Send Message**
 
@@ -202,14 +179,8 @@ Invoke-RestMethod
 
 `
   -Uri "http://127.0.0.1:8000/sessions/sess_462504f7639c/messages" `
-
-  
   -Method POST `
-
-
   -ContentType "application/json" `
-
-  
   -Body '{"content":"Hello AI"}'
 
   
@@ -243,17 +214,9 @@ gcloud builds submit --tag gcr.io/YOUR_PROJECT_ID/langgraph-api
 
 
 gcloud run deploy langgraph-api \
-
-
   --image gcr.io/YOUR_PROJECT_ID/langgraph-api \
-
-  
   --platform managed \
-
-
   --region us-central1 \
-
-  
   --allow-unauthenticated
 
 
@@ -297,11 +260,7 @@ gcloud run deploy langgraph-api \
 ### ✅ Final Step
 
 git add README.md
-
-
 git commit -m "Enhanced README styling and formatting"
-
-
 git push origin main
 
 
