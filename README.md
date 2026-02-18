@@ -252,3 +252,53 @@ flowchart TD
     CloudRun --> FastAPI
 ```
 
+# Cyndx Assessment – LangGraph-Based AI Agent API
+
+---
+
+## 🔗 Main README
+
+https://github.com/Anusha1143/cyndx-assessment/blob/main/README.md
+
+---
+
+## 🔗 Sections You Can Link To
+
+### 🧠 Project Overview
+https://github.com/Anusha1143/cyndx-assessment/blob/main/README.md#project-overview
+
+### ✨ Key Features
+https://github.com/Anusha1143/cyndx-assessment/blob/main/README.md#key-features
+
+### 🏗 System Architecture
+https://github.com/Anusha1143/cyndx-assessment/blob/main/README.md#system-architecture
+
+### 📂 Project Structure
+https://github.com/Anusha1143/cyndx-assessment/blob/main/README.md#project-structure
+
+### ⚙ Local Execution Steps
+https://github.com/Anusha1143/cyndx-assessment/blob/main/README.md#local-execution-steps
+
+### 🌐 API Endpoints & Testing
+https://github.com/Anusha1143/cyndx-assessment/blob/main/README.md#api-endpoints--testing
+
+### 🐳 Docker Execution
+https://github.com/Anusha1143/cyndx-assessment/blob/main/README.md#docker-execution
+
+### ☁ Google Cloud Run Deployment
+https://github.com/Anusha1143/cyndx-assessment/blob/main/README.md#google-cloud-run-deployment
+
+### ⚠ Error Handling
+https://github.com/Anusha1143/cyndx-assessment/blob/main/README.md#error-handling
+
+### 🔐 Security Considerations
+https://github.com/Anusha1143/cyndx-assessment/blob/main/README.md#security-considerations
+
+### ✅ Validation Checklist
+https://github.com/Anusha1143/cyndx-assessment/blob/main/README.md#validation-checklist
+
+### 🎯 Conclusion
+https://github.com/Anusha1143/cyndx-assessment/blob/main/README.md#conclusion
+
+
+
