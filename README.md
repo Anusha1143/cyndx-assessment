@@ -39,25 +39,20 @@ This project implements a session-based AI Agent API using:
 
 ### 🏗 System Architecture
 
-**🔄 High-Level Flow****
+## 🧠 System Architecture Flow
 
-Client Request
-    │
-    ▼
-FastAPI Routes
+```mermaid
+flowchart LR
 
-    │
-    ▼   
-Session Manager
-    │
-    ▼ 
-LangGraph State Graph
-    │
-    ▼
-OpenAI Model (gpt-4o-mini
-    │
-    ▼
-JSON Response
+Client["Client"] --> API["FastAPI Backend"]
+API --> Routes["API Routes"]
+Routes --> Session["Session Manager"]
+Session --> Graph["LangGraph State Graph"]
+Graph --> Model["OpenAI gpt-4o-mini"]
+Model --> Response["Structured JSON Response"]
+Response --> Client
+```
+
 
 
 **🧩 Architecture Components**
@@ -76,16 +71,23 @@ JSON Response
 
 ## 📦 Application Flow
 
-```mermaid
-flowchart TD
+## 🧠 System Architecture Flow
 
-main.py --> routes.py
-routes.py --> graph.py
-graph.py --> nodes.py
-nodes.py --> tools.py
-graph.py --> state.py
-main.py --> errors.py
+```mermaid
+flowchart LR
+
+Client["Client Request"] --> FastAPI["FastAPI (main.py)"]
+FastAPI --> Routes["routes.py"]
+Routes --> Graph["graph.py"]
+Graph --> Nodes["nodes.py"]
+Graph --> State["state.py"]
+Nodes --> Tools["tools.py"]
+FastAPI --> Errors["errors.py"]
+Graph --> OpenAI["OpenAI gpt-4o-mini"]
+OpenAI --> Response["JSON Response"]
+Response --> Client
 ```
+
 
 
 ### ⚙ Local Execution Steps
