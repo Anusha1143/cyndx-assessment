@@ -42,20 +42,30 @@ This project implements a session-based AI Agent API using:
 **🔄 High-Level Flow****
 
 Client Request
+
     │
     ▼
+    
 FastAPI Routes
+
     │
     ▼
+    
 Session Manager
+
     │
     ▼
+    
 LangGraph State Graph
+
     │
     ▼
-OpenAI Model (gpt-4o-mini)
+    
+OpenAI Model (gpt-4o-mini
+
     │
     ▼
+    
 JSON Response
 
 
@@ -98,76 +108,152 @@ cyndx-assessment/
 **🥇 Step 1: Clone Repository**
 
 git clone https://github.com/Anusha1143/cyndx-assessment.git
+
 cd cyndx-assessment
 
 **🥈 Step 2: Create Virtual Environment**
 
+
 python -m venv venv
+
+
 venv\Scripts\activate
 
 **🥉 Step 3: Install Dependencies**
 
+
 pip install -r requirements.txt
+
 
 **🔐 Step 4: Configure Environment Variables**
 
+
 OPENAI_API_KEY=my api key
+
 
 **▶ Step 5: Run Application Locally**
 
 uvicorn cyndx_langgraph_api.main:app --reload
+
+
 Application runs at:
+
+
 http://127.0.0.1:8000
 
 
 ### 🌐 API Endpoints & Testing
 **🩺 6.1 Health Check**
+
+
 **Endpoint**
+
+
 GET /
+
+
 **Test**
+
+
 curl http://127.0.0.1:8000/
+
+
 **Response**
 {
   "message": "LangGraph Agent API is running"
 }
 
 **🆕 6.2 Create Session**
+
+
+
 **Endpoint**
+
+
 POST /sessions
+
+
 **PowerShell Test**
 
+
 Invoke-RestMethod `
-  -Uri "http://127.0.0.1:8000/sessions" `
+
+  -Uri "http://127.0.0.1:8000/sessions" 
+  `
   -Method POST `
+  
   -ContentType "application/json" `
+  
   -Body "{}"
 
 **💬 6.3 Send Message**
+
+
 **Endpoint**
+
+
 POST /sessions/{session_id}/messages
+
+
 **Example**
-Invoke-RestMethod `
+
+
+Invoke-RestMethod 
+
+`
   -Uri "http://127.0.0.1:8000/sessions/sess_462504f7639c/messages" `
+
+  
   -Method POST `
+
+
   -ContentType "application/json" `
+
+  
   -Body '{"content":"Hello AI"}'
+
+  
 
 
 ### 🐳 Docker Execution
+
+
 **🔨 Build Image**
+
+
 docker build -t langgraph-api .
+
+
 **▶ Run Container**
+
+
 docker run -p 8080:8080 -e OPENAI_API_KEY=your_openai_api_key langgraph-api
 
 
 ### ☁ Google Cloud Run Deployment
+
+
 **🚀 Build & Push**
+
+
 gcloud builds submit --tag gcr.io/YOUR_PROJECT_ID/langgraph-api
+
+
 **🚀 Deploy**
+
+
 gcloud run deploy langgraph-api \
+
+
   --image gcr.io/YOUR_PROJECT_ID/langgraph-api \
+
+  
   --platform managed \
+
+
   --region us-central1 \
+
+  
   --allow-unauthenticated
 
 
@@ -198,21 +284,27 @@ gcloud run deploy langgraph-api \
 ✔ Clean repository
 
 ### 🎯 Conclusion
-*🧠 Stateful AI agent architecture using LangGraph
+🧠 Stateful AI agent architecture using LangGraph
 
-*🌐 REST API development with FastAPI
+🌐 REST API development with FastAPI
 
-*🐳 Containerized microservice design
+🐳 Containerized microservice design
 
-*☁ Serverless deployment using Google Cloud Run
+☁ Serverless deployment using Google Cloud Run
 
-*🔐 Secure configuration management
+🔐 Secure configuration management
 
 ### ✅ Final Step
 
 git add README.md
+
+
 git commit -m "Enhanced README styling and formatting"
+
+
 git push origin main
+
+
 
 ```mermaid
 flowchart TD
