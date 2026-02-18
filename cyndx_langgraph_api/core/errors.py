@@ -1,7 +1,16 @@
-from fastapi.responses import JSONResponse
+from fastapi import HTTPException
+import uuid
 
-def custom_exception_handler(request, exc):
-    return JSONResponse(
-        status_code=500,
-        content={"error": "Internal Server Error"}
+
+def api_error(code: str, message: str, status_code: int):
+    return HTTPException(
+        status_code=status_code,
+        detail={
+            "error": {
+                "code": code,
+                "message": message,
+                "details": {},
+                "request_id": f"req_{uuid.uuid4().hex[:8]}"
+            }
+        }
     )

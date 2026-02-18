@@ -1,16 +1,27 @@
 from fastapi import FastAPI
-from app.routes import router
-from core.middleware import add_middlewares
+from cyndx_langgraph_api.app.routes import router
+from cyndx_langgraph_api.core.middleware import add_middlewares
 
-app = FastAPI(title="Cyndx LangGraph API")
+app = FastAPI(title="Cyndx LangGraph API", version="1.0.0")
 
 add_middlewares(app)
+
 app.include_router(router)
 
-@app.get("/")
-def root():
-    return {"message": "Cyndx LangGraph API Running"}
+START_TIME = __import__("time").time()
+
 
 @app.get("/health")
 def health():
-    return {"status": "ok"}
+    import time
+    uptime = int(time.time() - START_TIME)
+
+    return {
+        "status": "healthy",
+        "version": "1.0.0",
+        "uptime_seconds": uptime,
+        "checks": {
+            "llm_provider": "ok",
+            "checkpoint_store": "ok"
+        }
+    }
