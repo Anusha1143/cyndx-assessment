@@ -1,66 +1,81 @@
 
-**CYNDX Assessment**
+**# Cyndx Assessment – LangGraph-Based AI Agent API– Serverless Deployment**
 
-**LangGraph-Based AI Agent API – Serverless Deployment**
+### 🧠 Project Overview
+This project implements a session-based AI Agent API using:
 
-**Project Overview**
+*FastAPI — REST API development
 
-**This project implements a session-based AI Agent API using:**
+*LangGraph — Stateful agent orchestration
 
-*FastAPI for REST API development
+*OpenAI (gpt-4o-mini) — LLM response generation
 
-*LangGraph for stateful agent orchestration
+*Docker — Containerization
 
-*OpenAI (gpt-4o-mini) for LLM responses
+*Google Cloud Run — Serverless deployment
 
-*Docker for containerization
+**The system supports:**
 
-*Google Cloud Run for serverless deployment
+🔹 Session management
 
-*The system supports session management, conversation state handling, and scalable cloud deployment.
+🔹 Conversation state handling
 
-**2️⃣ Key Features**
+🔹 Scalable cloud deployment
 
-*Session-based conversational AI
+### ✨ Key Features
+✔ Session-based conversational AI
 
-*Stateful message handling per session
+✔ Stateful message handling per session
 
-*LangGraph state graph architecture
+✔ LangGraph state graph architecture
 
-*Tool-ready design (extensible)
+✔ Extensible tool-ready design
 
-*RESTful API endpoints
+✔ RESTful API endpoints
 
-*Dockerized deployment
+✔ Dockerized deployment
 
-*Serverless hosting via Google Cloud Run
+✔ Serverless hosting
 
-3️⃣ System Architecture
-High-Level Flow
+### 🏗 System Architecture
+
+**🔄 High-Level Flow****
+
 Client Request
-      ↓
+    │
+    ▼
 FastAPI Routes
-      ↓
+    │
+    ▼
 Session Manager
-      ↓
+    │
+    ▼
 LangGraph State Graph
-      ↓
+    │
+    ▼
 OpenAI Model (gpt-4o-mini)
-      ↓
+    │
+    ▼
 JSON Response
 
-Architecture Components
-Component	Responsibility
-FastAPI	HTTP request handling
-Sessions Manager	Maintains session state
-LangGraph	Agent workflow orchestration
-OpenAI	Generates AI responses
-Docker	Containerization
-Cloud Run	Serverless execution
-4️⃣ Project Structure
+
+**🧩 Architecture Components**
+
+| **Component**    | **Responsibility**           |
+| ---------------- | ---------------------------- |
+| FastAPI          | HTTP request handling        |
+| Sessions Manager | Maintains session state      |
+| LangGraph        | Agent workflow orchestration |
+| OpenAI           | Generates AI responses       |
+| Docker           | Containerization             |
+| Cloud Run        | Serverless execution         |
+
+
+### 📂 Project Structure
 cyndx-assessment/
 │
 ├── cyndx_langgraph_api/
+│   │
 │   ├── app/
 │   │   ├── graph.py
 │   │   ├── nodes.py
@@ -75,108 +90,80 @@ cyndx-assessment/
 │
 ├── Dockerfile
 ├── requirements.txt
-├── .env (excluded from Git)
+├── .env              (excluded from Git)
 ├── README.md
 
-5️⃣ Local Execution Steps
-Step 1: Clone Repository
+
+### ⚙ Local Execution Steps
+**🥇 Step 1: Clone Repository**
+
 git clone https://github.com/Anusha1143/cyndx-assessment.git
 cd cyndx-assessment
 
-Step 2: Create Virtual Environment
-Windows
+**🥈 Step 2: Create Virtual Environment**
+
 python -m venv venv
 venv\Scripts\activate
 
-Mac/Linux
-python3 -m venv venv
-source venv/bin/activate
+**🥉 Step 3: Install Dependencies**
 
-Step 3: Install Dependencies
 pip install -r requirements.txt
 
-Step 4: Configure Environment Variables
+**🔐 Step 4: Configure Environment Variables**
 
-Create a .env file in project root:
+OPENAI_API_KEY=my api key
 
-OPENAI_API_KEY=your_openai_api_key_here
+**▶ Step 5: Run Application Locally**
 
-
-⚠️ Important: This file must not be committed to GitHub.
-
-Step 5: Run Application Locally
 uvicorn cyndx_langgraph_api.main:app --reload
-
-
 Application runs at:
-
 http://127.0.0.1:8000
 
-6️⃣ API Endpoints & Testing
-6.1 Health Check
-Endpoint
+
+### 🌐 API Endpoints & Testing
+**🩺 6.1 Health Check**
+**Endpoint**
 GET /
-
-Test (Curl)
+**Test**
 curl http://127.0.0.1:8000/
-
-Expected Response
+**Response**
 {
   "message": "LangGraph Agent API is running"
 }
 
-6.2 Create Session
-Endpoint
+**🆕 6.2 Create Session**
+**Endpoint**
 POST /sessions
+**PowerShell Test**
 
-PowerShell Test
 Invoke-RestMethod `
   -Uri "http://127.0.0.1:8000/sessions" `
   -Method POST `
   -ContentType "application/json" `
   -Body "{}"
 
-Sample Response
-{
-  "session_id": "sess_462504f7639c",
-  "status": "active",
-  "agent_config": {
-    "model": "gpt-4o-mini",
-    "temperature": 0.7
-  }
-}
-
-6.3 Send Message to Session
-Endpoint
+**💬 6.3 Send Message**
+**Endpoint**
 POST /sessions/{session_id}/messages
-
-Example
+**Example**
 Invoke-RestMethod `
   -Uri "http://127.0.0.1:8000/sessions/sess_462504f7639c/messages" `
   -Method POST `
   -ContentType "application/json" `
   -Body '{"content":"Hello AI"}'
 
-Sample Response
-{
-  "message_id": "msg_9f8b19ea4ce8",
-  "session_id": "sess_462504f7639c",
-  "role": "assistant",
-  "content": "Hello! How can I assist you today?"
-}
 
-7️⃣ Docker Execution
-Build Docker Image
+### 🐳 Docker Execution
+**🔨 Build Image**
 docker build -t langgraph-api .
-
-Run Container
+**▶ Run Container**
 docker run -p 8080:8080 -e OPENAI_API_KEY=your_openai_api_key langgraph-api
 
-8️⃣ Google Cloud Run Deployment
-Build & Push Image
-gcloud builds submit --tag gcr.io/YOUR_PROJECT_ID/langgraph-api
 
-Deploy
+### ☁ Google Cloud Run Deployment
+**🚀 Build & Push**
+gcloud builds submit --tag gcr.io/YOUR_PROJECT_ID/langgraph-api
+**🚀 Deploy**
 gcloud run deploy langgraph-api \
   --image gcr.io/YOUR_PROJECT_ID/langgraph-api \
   --platform managed \
@@ -184,48 +171,48 @@ gcloud run deploy langgraph-api \
   --allow-unauthenticated
 
 
-After deployment, the service will be accessible via a public HTTPS endpoint.
+### ⚠ Error Handling
 
-9️⃣ Error Handling
-Status Code	Description
-422	Missing or invalid request body
-404	Session not found
-500	Internal server error
-🔟 Security Considerations
+| **Status Code** | **Description**         |
+| --------------- | ----------------------- |
+| 422             | Missing/invalid request |
+| 404             | Session not found       |
+| 500             | Internal server error   |
 
-API key stored via environment variables
+### 🔐 Security Considerations
 
-.env excluded using .gitignore
+*Environment variable based API key storage
 
-No secrets committed to repository
+*.env excluded via .gitignore
 
-Stateless cloud deployment
+*No secrets committed
 
-1️⃣1️⃣ Validation Checklist
+*Cloud-native stateless design
 
+### ✅ Validation Checklist
 ✔ Application runs locally
-✔ Session creation successful
+✔ Session creation works
 ✔ Message endpoint returns AI response
 ✔ Docker build successful
 ✔ Cloud Run deployment successful
-✔ Public endpoint accessible
-✔ Clean Git repository (no secrets)
+✔ Clean repository
 
-1️⃣2️⃣ Conclusion
+### 🎯 Conclusion
+*🧠 Stateful AI agent architecture using LangGraph
 
-This implementation demonstrates:
+*🌐 REST API development with FastAPI
 
-Stateful AI agent architecture using LangGraph
+*🐳 Containerized microservice design
 
-REST API development with FastAPI
+*☁ Serverless deployment using Google Cloud Run
 
-Session-based conversational design
+*🔐 Secure configuration management
 
-Containerized microservice architecture
+### ✅ Final Step
 
-Serverless deployment on Google Cloud Run
-
-The project follows production-ready practices including modular design, environment-based configuration, and secure API key handling.
+git add README.md
+git commit -m "Enhanced README styling and formatting"
+git push origin main
 
 ```mermaid
 flowchart TD
@@ -252,53 +239,6 @@ flowchart TD
     CloudRun --> FastAPI
 ```
 
-# Cyndx Assessment – LangGraph-Based AI Agent API
-
----
-
-## 🔗 Main README
-
-https://github.com/Anusha1143/cyndx-assessment/blob/main/README.md
-
----
-
-## 🔗 Sections You Can Link To
-
-### 🧠 Project Overview
-https://github.com/Anusha1143/cyndx-assessment/blob/main/README.md#project-overview
-
-### ✨ Key Features
-https://github.com/Anusha1143/cyndx-assessment/blob/main/README.md#key-features
-
-### 🏗 System Architecture
-https://github.com/Anusha1143/cyndx-assessment/blob/main/README.md#system-architecture
-
-### 📂 Project Structure
-https://github.com/Anusha1143/cyndx-assessment/blob/main/README.md#project-structure
-
-### ⚙ Local Execution Steps
-https://github.com/Anusha1143/cyndx-assessment/blob/main/README.md#local-execution-steps
-
-### 🌐 API Endpoints & Testing
-https://github.com/Anusha1143/cyndx-assessment/blob/main/README.md#api-endpoints--testing
-
-### 🐳 Docker Execution
-https://github.com/Anusha1143/cyndx-assessment/blob/main/README.md#docker-execution
-
-### ☁ Google Cloud Run Deployment
-https://github.com/Anusha1143/cyndx-assessment/blob/main/README.md#google-cloud-run-deployment
-
-### ⚠ Error Handling
-https://github.com/Anusha1143/cyndx-assessment/blob/main/README.md#error-handling
-
-### 🔐 Security Considerations
-https://github.com/Anusha1143/cyndx-assessment/blob/main/README.md#security-considerations
-
-### ✅ Validation Checklist
-https://github.com/Anusha1143/cyndx-assessment/blob/main/README.md#validation-checklist
-
-### 🎯 Conclusion
-https://github.com/Anusha1143/cyndx-assessment/blob/main/README.md#conclusion
 
 
 
